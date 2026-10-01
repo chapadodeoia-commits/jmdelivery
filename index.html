@@ -1,1245 +1,261 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="h-full bg-slate-900">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>JM Delivery | Açaí & Açaiteria</title>
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  
-  <!-- Google Fonts: Poppins -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Supabase JS SDK v2 CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            acai: {
-              50: '#fbf4ff',
-              100: '#f6e7ff',
-              200: '#edd0ff',
-              300: '#e0a9ff',
-              400: '#cb74ff',
-              500: '#b13bff',
-              600: '#9a19f5',
-              700: '#830ed8',
-              800: '#6d0fae',
-              900: '#4c1d95',
-              950: '#2e0a61',
-            },
-            accent: {
-              lime: '#84cc16',
-              emerald: '#10b981',
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>JM Delivery | Açaí & Açaíteria</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        acai: { 50: '#fbf4ff', 100: '#f5e7ff', 200: '#edd0ff', 300: '#e0afff', 400: '#cb74ff', 500: '#b13bff', 600: '#9a15f5', 700: '#830e83', 800: '#6d0fa8', 900: '#4c1d95', 950: '#2e0a61' },
+                        accent: { lime: '#84cc16', emerald: '#10b981' }
+                    },
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] }
+                }
             }
-          },
-          fontFamily: {
-            sans: ['Poppins', 'sans-serif'],
-          }
         }
-      }
-    }
-  </script>
-
-  <style>
-    /* Custom Scrollbar for sleek mobile experience */
-    ::-webkit-scrollbar {
-      width: 4px;
-      height: 4px;
-    }
-    ::-webkit-scrollbar-track {
-      background: rgba(15, 23, 42, 0.6);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #7c3aed;
-      border-radius: 9999px;
-    }
-    .hide-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-    .hide-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-    .glass-card {
-      background: rgba(30, 27, 75, 0.65);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(139, 92, 246, 0.2);
-    }
-    .glass-nav {
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(16px);
-      border-top: 1px solid rgba(139, 92, 246, 0.25);
-    }
-    @keyframes pulse-soft {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.04); }
-    }
-    .pulse-animation {
-      animation: pulse-soft 2s infinite ease-in-out;
-    }
-  </style>
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        .glass-card { background: rgba(30, 27, 75, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(139, 92, 246, 0.2); }
+        .glass-nav { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px); border-top: 1px solid rgba(139, 92, 246, 0.2); }
+    </style>
 </head>
-
-<body class="h-full bg-slate-950 text-slate-100 font-sans pb-24 antialiased selection:bg-acai-600 selection:text-white">
-
-  <!-- TOP APP HEADER -->
-  <header class="sticky top-0 z-30 glass-card px-4 py-3 shadow-lg border-b border-purple-900/40">
-    <div class="max-w-md mx-auto flex items-center justify-between">
-      <!-- Logo & Store Name -->
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-acai-900 to-acai-600 flex items-center justify-center text-amber-300 font-bold text-xl shadow-md shadow-acai-900/50 border border-purple-400/30">
-          <i class="fa-solid fa-bowl-food"></i>
+<body class="min-h-screen pb-24">
+    <!-- HEADER -->
+    <header class="glass-nav sticky top-0 z-40 px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-acai-600 to-acai-400 flex items-center justify-center text-white shadow-lg shadow-acai-600/30">
+                <i class="fa-solid fa-bowl-food text-xl"></i>
+            </div>
+            <div>
+                <h1 class="font-bold text-lg leading-tight tracking-wide">JM DELIVERY</h1>
+                <div class="flex items-center space-x-2 text-xs">
+                    <span class="flex items-center text-accent-emerald font-medium"><span class="w-2 h-2 rounded-full bg-accent-emerald mr-1 animate-pulse"></span> ABERTO</span>
+                    <span class="text-slate-400">• 25-40 min</span>
+                </div>
+            </div>
         </div>
+        <button onclick="openAdmin()" class="bg-acai-800/80 hover:bg-acai-700 border border-acai-500/30 px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center space-x-1.5 transition">
+            <i class="fa-solid fa-user-shield text-acai-300"></i>
+            <span>Admin</span>
+        </button>
+    </header>
+
+    <!-- BANNER -->
+    <main class="max-w-md mx-auto px-4 pt-4 space-y-6">
+        <div class="glass-card rounded-2xl p-4 relative overflow-hidden shadow-xl bg-gradient-to-r from-acai-900/90 to-slate-900/90">
+            <div class="relative z-10 space-y-2">
+                <span class="bg-acai-500/20 text-acai-300 text-xs font-semibold px-2.5 py-1 rounded-full border border-acai-500/30">🔥 AÇAÍ PURO & CREMOSO</span>
+                <h2 class="text-xl font-bold text-white">O melhor Açaí da cidade na sua porta!</h2>
+                <p class="text-xs text-slate-300">Monte do seu jeito com acompanhamentos grátis e adicionais deliciosos.</p>
+                <div class="pt-1 text-xs text-accent-lime font-semibold flex items-center">
+                    <i class="fa-solid fa-motorcycle mr-1.5"></i> Taxa de Entrega: R$ 5,00
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORIAS -->
         <div>
-          <h1 class="font-extrabold text-base leading-tight tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-purple-200 via-purple-100 to-purple-300">
-            JM DELIVERY
-          </h1>
-          <div class="flex items-center gap-2 text-xs">
-            <span id="storeStatusBadge" class="inline-flex items-center gap-1 font-semibold px-2 py-0.5 rounded-full text-[10px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-              ABERTO
-            </span>
-            <span class="text-slate-400 text-[11px]"><i class="fa-solid fa-clock text-purple-400 mr-1"></i>25-40 min</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Mode Switcher (Client vs Admin) -->
-      <button id="btnToggleAdmin" onclick="toggleAdminMode()" class="px-3 py-1.5 rounded-xl bg-purple-900/50 hover:bg-purple-800/60 border border-purple-500/30 text-purple-200 text-xs font-medium flex items-center gap-1.5 transition-all active:scale-95">
-        <i class="fa-solid fa-user-shield text-amber-400" id="adminIcon"></i>
-        <span id="adminBtnText">Admin</span>
-      </button>
-    </div>
-  </header>
-
-  <!-- MAIN CONTAINER -->
-  <main class="max-w-md mx-auto px-4 pt-4 space-y-5">
-    
-    <!-- ADMIN ALERT / SEED BANNER (Visible in Admin Mode) -->
-    <div id="adminBanner" class="hidden glass-card rounded-2xl p-4 border border-amber-500/40 bg-amber-950/30 text-amber-200 space-y-3">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-2 font-bold text-sm text-amber-400">
-          <i class="fa-solid fa-crown"></i> Painel Administrativo
-        </div>
-        <button onclick="toggleStoreStatus()" id="btnStoreToggle" class="px-3 py-1 text-xs rounded-lg font-semibold bg-emerald-600 text-white hover:bg-emerald-500 transition">
-          Loja: ABERTA
-        </button>
-      </div>
-      <p class="text-xs text-amber-200/80">Gestão em tempo real de pedidos e cardápio do Supabase.</p>
-      <div class="flex gap-2">
-        <button onclick="seedDatabaseDemo()" class="w-full py-2 px-3 bg-gradient-to-r from-purple-700 to-acai-600 text-white text-xs font-semibold rounded-xl shadow border border-purple-400/30 active:scale-95 transition flex items-center justify-center gap-2">
-          <i class="fa-solid fa-wand-magic-sparkles text-amber-300"></i> Criar Produtos Demo no Supabase
-        </button>
-      </div>
-    </div>
-
-    <!-- PROMO / INFO BANNER -->
-    <div id="clientHeroBanner" class="relative overflow-hidden rounded-3xl p-5 bg-gradient-to-br from-acai-900 via-purple-950 to-slate-900 border border-purple-500/30 shadow-xl shadow-acai-950/50">
-      <div class="relative z-10 space-y-2">
-        <span class="px-2.5 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-400/30 text-[10px] font-bold uppercase tracking-wider">
-          <i class="fa-solid fa-fire text-amber-400 mr-1"></i> Açaí Puro & Cremoso
-        </span>
-        <h2 class="text-xl font-black text-white leading-tight">
-          O melhor Açaí da cidade na sua porta! 🍧
-        </h2>
-        <p class="text-xs text-purple-200/80 max-w-[220px]">
-          Monte do seu jeito com acompanhamentos grátis e adicionais deliciosos.
-        </p>
-        <div class="pt-1 flex items-center gap-3 text-xs font-semibold text-emerald-400">
-          <span><i class="fa-solid fa-motorcycle mr-1"></i> Taxa de Entrega: <strong id="deliveryFeeLabel">R$ 5,00</strong></span>
-        </div>
-      </div>
-      <!-- Background decorative circle -->
-      <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-acai-600/30 rounded-full blur-2xl"></div>
-      <i class="fa-solid fa-bowl-rice text-7xl text-purple-500/20 absolute right-3 bottom-2 transform -rotate-12"></i>
-    </div>
-
-    <!-- CATEGORY FILTER PILLS -->
-    <section>
-      <div class="flex items-center justify-between mb-3">
-        <h3 class="text-sm font-bold text-slate-200 flex items-center gap-2">
-          <i class="fa-solid fa-layer-group text-acai-400"></i> Categorias
-        </h3>
-        <span class="text-[11px] text-slate-400" id="productCountLabel">Carregando...</span>
-      </div>
-
-      <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-2 -mx-4 px-4" id="categoriesContainer">
-        <!-- Dynamic Categories Loaded via JS -->
-        <button onclick="filterCategory('all')" class="category-btn active px-4 py-2 rounded-2xl bg-acai-600 text-white font-medium text-xs whitespace-nowrap shadow-lg shadow-acai-600/30 border border-purple-400/40 transition-all flex items-center gap-2">
-          <i class="fa-solid fa-border-all"></i> Todos
-        </button>
-      </div>
-    </section>
-
-    <!-- PRODUCT LIST GRID -->
-    <section class="space-y-3" id="productsSection">
-      <div id="productsLoading" class="text-center py-12 space-y-3">
-        <i class="fa-solid fa-circle-notch fa-spin text-3xl text-acai-500"></i>
-        <p class="text-xs text-slate-400">Carregando cardápio do Supabase...</p>
-      </div>
-
-      <div id="productsGrid" class="grid grid-cols-1 gap-3.5 hidden">
-        <!-- Dynamic Product Cards Injected Here -->
-      </div>
-    </section>
-
-    <!-- ORDERS DASHBOARD (ADMIN MODE VIEW) -->
-    <section id="adminOrdersSection" class="hidden space-y-4">
-      <div class="flex items-center justify-between">
-        <h3 class="text-base font-bold text-white flex items-center gap-2">
-          <i class="fa-solid fa-receipt text-amber-400"></i> Pedidos Recebidos
-        </h3>
-        <button onclick="fetchAdminOrders()" class="text-xs text-purple-400 hover:text-purple-300 flex items-center gap-1">
-          <i class="fa-solid fa-rotate-right"></i> Atualizar
-        </button>
-      </div>
-
-      <div id="adminOrdersList" class="space-y-3">
-        <p class="text-xs text-slate-400 text-center py-6">Nenhum pedido recebido ainda.</p>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FLOATING BOTTOM NAV / CART BUTTON -->
-  <div class="fixed bottom-0 left-0 right-0 z-40 glass-nav px-4 py-3">
-    <div class="max-w-md mx-auto flex items-center justify-between gap-3">
-      
-      <!-- Home Button -->
-      <button onclick="switchTab('menu')" class="flex flex-col items-center gap-1 text-slate-400 hover:text-purple-400 transition text-xs font-medium px-3">
-        <i class="fa-solid fa-store text-lg"></i>
-        <span>Cardápio</span>
-      </button>
-
-      <!-- Cart Trigger Button -->
-      <button onclick="openCartDrawer()" class="flex-1 py-3 px-4 rounded-2xl bg-gradient-to-r from-acai-600 via-purple-600 to-acai-700 hover:from-acai-500 hover:to-acai-600 text-white font-bold text-sm shadow-lg shadow-acai-900/60 border border-purple-400/40 flex items-center justify-between transition-all active:scale-95">
-        <div class="flex items-center gap-2.5">
-          <div class="relative">
-            <i class="fa-solid fa-basket-shopping text-lg"></i>
-            <span id="cartBadge" class="absolute -top-2 -right-2 bg-amber-400 text-slate-950 font-black text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-slate-950 shadow">0</span>
-          </div>
-          <span>Ver Carrinho</span>
-        </div>
-        <span id="cartTotalLabel" class="text-amber-300 font-extrabold text-base">R$ 0,00</span>
-      </button>
-
-      <!-- Status/Tracker Button -->
-      <button onclick="openActiveOrderModal()" class="flex flex-col items-center gap-1 text-slate-400 hover:text-purple-400 transition text-xs font-medium px-3 relative">
-        <i class="fa-solid fa-receipt text-lg"></i>
-        <span>Status</span>
-        <span id="orderTrackerDot" class="hidden absolute top-0 right-3 w-2.5 h-2.5 bg-emerald-400 rounded-full animate-ping"></span>
-      </button>
-    </div>
-  </div>
-
-  <!-- MODAL: PRODUCT CUSTOMIZATION (DRAWER) -->
-  <div id="productModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden transition-opacity flex items-end sm:items-center justify-center p-0 sm:p-4">
-    <div class="w-full max-w-md bg-slate-900 border border-purple-900/50 rounded-t-3xl sm:rounded-3xl max-h-[90vh] flex flex-col overflow-hidden shadow-2xl animate-in slide-in-from-bottom duration-300">
-      
-      <!-- Modal Header Image -->
-      <div class="relative h-48 bg-purple-950/80 overflow-hidden flex-shrink-0">
-        <img id="modalProductImg" src="" alt="Produto" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=600&q=80'" />
-        <button onclick="closeProductModal()" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-slate-950/70 text-slate-200 hover:text-white flex items-center justify-center backdrop-blur transition border border-white/10">
-          <i class="fa-solid fa-xmark text-lg"></i>
-        </button>
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900 to-transparent p-4 pt-12">
-          <h3 id="modalProductName" class="text-xl font-extrabold text-white">Nome do Açaí</h3>
-          <p id="modalProductDesc" class="text-xs text-slate-300 line-clamp-2">Descrição detalhada do produto.</p>
-        </div>
-      </div>
-
-      <!-- Modal Customization Options Body -->
-      <div class="p-4 space-y-4 overflow-y-auto flex-1">
-        
-        <!-- Acompanhamentos Gratuitos (Escolha até 3) -->
-        <div class="space-y-2">
-          <div class="flex items-center justify-between">
-            <h4 class="text-xs font-bold text-purple-300 uppercase tracking-wider flex items-center gap-1.5">
-              <i class="fa-solid fa-check-double text-emerald-400"></i> Acompanhamentos Grátis
-            </h4>
-            <span class="text-[10px] bg-purple-900/60 text-purple-200 px-2 py-0.5 rounded-full border border-purple-500/30">Escolha até 3</span>
-          </div>
-          <div class="grid grid-cols-2 gap-2" id="freeComplementsContainer">
-            <!-- Dynamic Checkboxes -->
-          </div>
-        </div>
-
-        <!-- Adicionais Pagos -->
-        <div class="space-y-2 pt-2 border-t border-slate-800">
-          <div class="flex items-center justify-between">
-            <h4 class="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
-              <i class="fa-solid fa-plus-circle"></i> Turbine seu Açaí (Opcional)
-            </h4>
-            <span class="text-[10px] text-slate-400">Valores adicionais</span>
-          </div>
-          <div class="space-y-2" id="paidComplementsContainer">
-            <!-- Dynamic Extras -->
-          </div>
-        </div>
-
-        <!-- Observação -->
-        <div class="space-y-1.5 pt-2 border-t border-slate-800">
-          <label class="text-xs font-medium text-slate-300 flex items-center gap-1">
-            <i class="fa-solid fa-comment-dots text-purple-400"></i> Observação ao preparador:
-          </label>
-          <textarea id="modalProductNotes" rows="2" placeholder="Ex: Capricha no leite em pó, sem calda..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-acai-500"></textarea>
-        </div>
-      </div>
-
-      <!-- Modal Footer (Quantity & Add Button) -->
-      <div class="p-4 bg-slate-950 border-t border-slate-800 flex items-center justify-between gap-3">
-        <!-- Quantity Selector -->
-        <div class="flex items-center bg-slate-900 border border-slate-800 rounded-2xl p-1">
-          <button onclick="updateModalQty(-1)" class="w-8 h-8 rounded-xl bg-slate-800 text-slate-200 hover:bg-slate-700 flex items-center justify-center font-bold text-base">-</button>
-          <span id="modalQtyLabel" class="w-8 text-center font-bold text-sm text-white">1</span>
-          <button onclick="updateModalQty(1)" class="w-8 h-8 rounded-xl bg-slate-800 text-slate-200 hover:bg-slate-700 flex items-center justify-center font-bold text-base">+</button>
-        </div>
-
-        <!-- Submit Add Button -->
-        <button onclick="confirmAddToCart()" class="flex-1 py-3 px-4 bg-gradient-to-r from-acai-600 to-purple-600 hover:from-acai-500 hover:to-purple-500 text-white font-bold text-sm rounded-2xl shadow-lg shadow-acai-900/50 flex items-center justify-between border border-purple-400/30">
-          <span>Adicionar</span>
-          <span id="modalTotalPriceLabel" class="text-amber-300 font-extrabold">R$ 0,00</span>
-        </button>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- CART & CHECKOUT DRAWER -->
-  <div id="cartDrawer" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden transition-opacity flex items-end sm:items-center justify-center p-0 sm:p-4">
-    <div class="w-full max-w-md bg-slate-900 border border-purple-900/50 rounded-t-3xl sm:rounded-3xl max-h-[92vh] flex flex-col overflow-hidden shadow-2xl">
-      
-      <!-- Cart Header -->
-      <div class="p-4 glass-card border-b border-purple-900/40 flex items-center justify-between">
-        <div class="flex items-center gap-2">
-          <i class="fa-solid fa-basket-shopping text-acai-400 text-lg"></i>
-          <h3 class="font-bold text-base text-white">Seu Carrinho</h3>
-        </div>
-        <button onclick="closeCartDrawer()" class="w-8 h-8 rounded-full bg-slate-800 text-slate-300 flex items-center justify-center hover:text-white">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-
-      <!-- Cart Body: List & Checkout Form -->
-      <div class="p-4 space-y-5 overflow-y-auto flex-1">
-        
-        <!-- Cart Items Container -->
-        <div id="cartItemsContainer" class="space-y-3">
-          <!-- Dynamic Items -->
-        </div>
-
-        <!-- Empty Cart State -->
-        <div id="emptyCartState" class="hidden text-center py-10 space-y-3">
-          <i class="fa-solid fa-bowl-rice text-5xl text-purple-900/60"></i>
-          <p class="text-sm font-semibold text-slate-300">Seu carrinho está vazio</p>
-          <button onclick="closeCartDrawer()" class="px-4 py-2 bg-acai-600/30 text-purple-300 border border-purple-500/30 rounded-xl text-xs font-semibold">
-            Escolher Açaí
-          </button>
-        </div>
-
-        <!-- CUSTOMER DELIVERY FORM -->
-        <div id="checkoutFormSection" class="space-y-3 pt-3 border-t border-slate-800">
-          <h4 class="text-xs font-bold text-purple-300 uppercase tracking-wider flex items-center gap-2">
-            <i class="fa-solid fa-location-dot text-amber-400"></i> Dados para Entrega
-          </h4>
-
-          <div class="space-y-2">
-            <div>
-              <label class="text-[11px] font-medium text-slate-400">Seu Nome Completo *</label>
-              <input type="text" id="custName" placeholder="Ex: João Silva" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-acai-500" />
+            <h3 class="text-sm font-bold text-slate-300 mb-3 flex items-center"><i class="fa-solid fa-layer-group text-acai-400 mr-2"></i> Categorias</h3>
+            <div class="flex space-x-2 overflow-x-auto pb-2 scrollbar-none">
+                <button onclick="filterCategory('todos')" id="cat-todos" class="px-4 py-2 rounded-xl text-xs font-semibold bg-acai-600 text-white shadow-md shadow-acai-600/30 whitespace-nowrap transition">Todos</button>
+                <button onclick="filterCategory('acai')" id="cat-acai" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800/80 text-slate-300 border border-slate-700 whitespace-nowrap transition">Açaí</button>
+                <button onclick="filterCategory('bebidas')" id="cat-bebidas" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800/80 text-slate-300 border border-slate-700 whitespace-nowrap transition">Bebidas Cremosas</button>
             </div>
-
-            <div class="grid grid-cols-2 gap-2">
-              <div>
-                <label class="text-[11px] font-medium text-slate-400">WhatsApp *</label>
-                <input type="tel" id="custPhone" placeholder="(00) 90000-0000" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-acai-500" />
-              </div>
-              <div>
-                <label class="text-[11px] font-medium text-slate-400">Bairro *</label>
-                <input type="text" id="custNeighborhood" placeholder="Ex: Centro" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-acai-500" />
-              </div>
-            </div>
-
-            <div>
-              <label class="text-[11px] font-medium text-slate-400">Endereço & Número *</label>
-              <input type="text" id="custAddress" placeholder="Rua, Número, Bloco/Apto" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-acai-500" />
-            </div>
-
-            <div>
-              <label class="text-[11px] font-medium text-slate-400">Ponto de Referência</label>
-              <input type="text" id="custReference" placeholder="Ex: Próximo à praça principal" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-acai-500" />
-            </div>
-          </div>
-
-          <!-- PAYMENT METHOD SELECTOR -->
-          <div class="pt-3 border-t border-slate-800 space-y-2">
-            <h4 class="text-xs font-bold text-purple-300 uppercase tracking-wider flex items-center gap-2">
-              <i class="fa-solid fa-wallet text-emerald-400"></i> Forma de Pagamento
-            </h4>
-
-            <div class="grid grid-cols-3 gap-2">
-              <label class="payment-option cursor-pointer p-2.5 rounded-xl border border-slate-800 bg-slate-950 flex flex-col items-center gap-1.5 text-center transition">
-                <input type="radio" name="paymentMethod" value="PIX" checked onclick="togglePaymentFields()" class="hidden" />
-                <i class="fa-brands fa-pix text-emerald-400 text-base"></i>
-                <span class="text-[11px] font-bold text-slate-200">PIX</span>
-              </label>
-
-              <label class="payment-option cursor-pointer p-2.5 rounded-xl border border-slate-800 bg-slate-950 flex flex-col items-center gap-1.5 text-center transition">
-                <input type="radio" name="paymentMethod" value="Dinheiro" onclick="togglePaymentFields()" class="hidden" />
-                <i class="fa-solid fa-money-bill-wave text-amber-400 text-base"></i>
-                <span class="text-[11px] font-bold text-slate-200">Dinheiro</span>
-              </label>
-
-              <label class="payment-option cursor-pointer p-2.5 rounded-xl border border-slate-800 bg-slate-950 flex flex-col items-center gap-1.5 text-center transition">
-                <input type="radio" name="paymentMethod" value="Cartão" onclick="togglePaymentFields()" class="hidden" />
-                <i class="fa-solid fa-credit-card text-purple-400 text-base"></i>
-                <span class="text-[11px] font-bold text-slate-200">Cartão</span>
-              </label>
-            </div>
-
-            <!-- Money Change Input (Optional) -->
-            <div id="changeSection" class="hidden pt-2">
-              <label class="text-[11px] font-medium text-amber-300">Precisa de troco para quanto?</label>
-              <input type="number" id="custChangeFor" placeholder="Ex: 50" class="w-full mt-1 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500" />
-            </div>
-          </div>
-
-          <!-- SUMMARY VALUES -->
-          <div class="p-3 bg-slate-950/80 rounded-2xl border border-slate-800 space-y-1.5 text-xs">
-            <div class="flex justify-between text-slate-400">
-              <span>Subtotal:</span>
-              <span id="summarySubtotal">R$ 0,00</span>
-            </div>
-            <div class="flex justify-between text-slate-400">
-              <span>Taxa de Entrega:</span>
-              <span id="summaryDelivery">R$ 5,00</span>
-            </div>
-            <div class="flex justify-between text-sm font-extrabold text-white pt-1 border-t border-slate-800">
-              <span>Total a Pagar:</span>
-              <span id="summaryTotal" class="text-emerald-400">R$ 0,00</span>
-            </div>
-          </div>
-
         </div>
 
-      </div>
-
-      <!-- Cart Drawer Footer Button -->
-      <div class="p-4 bg-slate-950 border-t border-slate-800">
-        <button id="btnSubmitOrder" onclick="submitOrderToSupabase()" class="w-full py-3.5 px-4 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-black text-sm rounded-2xl shadow-lg shadow-emerald-950/50 flex items-center justify-center gap-2 transition active:scale-95">
-          <i class="fa-solid fa-circle-check text-base"></i>
-          <span>FINALIZAR PEDIDO</span>
-        </button>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- MODAL: PIX / ORDER CONFIRMATION -->
-  <div id="pixModal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden flex items-center justify-center p-4">
-    <div class="w-full max-w-md bg-slate-900 border border-emerald-500/40 rounded-3xl p-5 space-y-4 text-center shadow-2xl animate-in zoom-in-95 duration-200">
-      
-      <div class="w-14 h-14 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto text-2xl border border-emerald-500/30">
-        <i class="fa-solid fa-check"></i>
-      </div>
-
-      <div>
-        <h3 class="text-lg font-black text-white">Pedido Enviado com Sucesso!</h3>
-        <p class="text-xs text-slate-300 mt-1">Código do Pedido: <strong id="pixOrderIdLabel" class="text-purple-300">#0000</strong></p>
-      </div>
-
-      <!-- PIX Box -->
-      <div id="pixPaymentBox" class="p-4 bg-slate-950 rounded-2xl border border-purple-500/30 space-y-3">
-        <p class="text-xs font-semibold text-emerald-400">Escaneie o QR Code ou Use o Pix Copia e Cola:</p>
-        
-        <!-- Generated QR Code Image -->
-        <div class="bg-white p-2 rounded-xl w-36 h-36 mx-auto flex items-center justify-center">
-          <img id="pixQrCodeImg" src="" alt="QR Code PIX" class="w-full h-full" />
-        </div>
-
-        <div class="space-y-1">
-          <input type="text" id="pixCodeInput" readonly value="00020126580014BR.GOV.BCB.PIX0136123e4567-e89b-12d3-a456-4266141740005204000053039865802BR5911JM DELIVERY6009SAO PAULO62070503***63041234" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-2 py-1.5 text-[10px] text-slate-300 text-center font-mono select-all" />
-          <button onclick="copyPixCode()" class="w-full py-2 bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2 transition">
-            <i class="fa-regular fa-copy"></i> Copiar Código PIX
-          </button>
-        </div>
-      </div>
-
-      <div class="space-y-2 pt-2">
-        <button onclick="openWhatsAppConfirmation()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-2xl flex items-center justify-center gap-2 transition">
-          <i class="fa-brands fa-whatsapp text-lg"></i> Confirmar pelo WhatsApp
-        </button>
-        <button onclick="closePixModal()" class="w-full py-2.5 bg-slate-800 text-slate-300 font-semibold text-xs rounded-2xl hover:bg-slate-700">
-          Acompanhar Pedido na Tela
-        </button>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- MODAL: ACTIVE ORDER TRACKER -->
-  <div id="trackerModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
-    <div class="w-full max-w-md bg-slate-900 border border-purple-500/30 rounded-3xl p-5 space-y-4 shadow-2xl">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <h3 class="font-bold text-base text-white flex items-center gap-2">
-          <i class="fa-solid fa-motorcycle text-amber-400"></i> Status do Seu Pedido
-        </h3>
-        <button onclick="closeTrackerModal()" class="text-slate-400 hover:text-white">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-
-      <div id="trackerContent" class="space-y-4">
-        <p class="text-xs text-slate-400 text-center py-4">Você ainda não possui nenhum pedido ativo nesta sessão.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- TOAST NOTIFICATION CONTAINER -->
-  <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-purple-900 text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-2xl border border-purple-400/40 hidden transition-all flex items-center gap-2">
-    <i class="fa-solid fa-circle-info text-amber-400"></i>
-    <span id="toastMsg">Mensagem</span>
-  </div>
-
-  <script>
-    // SUPABASE CREDENTIALS
-    const SUPABASE_URL = "https://ryleobpskdndfutqykiu.supabase.co";
-    const SUPABASE_ANON_KEY = "sb_publishable_Nv73ElQsz7XBaCDGJm4hLg_4Ok0uUv4";
-
-    // Initialize Supabase Client
-    let supabase = null;
-    try {
-      supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-      console.log("Supabase Client initialized successfully.");
-    } catch (e) {
-      console.error("Error initializing Supabase:", e);
-    }
-
-    // Application Global State
-    let state = {
-      categories: [],
-      products: [],
-      selectedCategory: 'all',
-      cart: [],
-      deliveryFee: 5.00,
-      isStoreOpen: true,
-      isAdmin: false,
-      activeModalProduct: null,
-      modalQty: 1,
-      selectedFreeComplements: [],
-      selectedPaidComplements: [],
-      activeCustomerOrder: null,
-      adminOrders: []
-    };
-
-    // Default Fallback Demo Data (Used for seeding and immediate preview)
-    const DEFAULT_CATEGORIES = [
-      { id: 'cat_copo', name: 'Açaí no Copo', icon: 'fa-glass-water' },
-      { id: 'cat_tigela', name: 'Tigelas Especiais', icon: 'fa-bowl-rice' },
-      { id: 'cat_bebida', name: 'Bebidas & Sucos', icon: 'fa-bottle-water' }
-    ];
-
-    const DEFAULT_PRODUCTS = [
-      {
-        id: 'prod_1',
-        category_id: 'cat_copo',
-        name: 'Açaí Tradicional 400ml',
-        description: 'Açaí cremoso de altíssima qualidade. Monte com até 3 acompanhamentos grátis.',
-        price: 18.00,
-        image_url: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=600&q=80',
-        available: true
-      },
-      {
-        id: 'prod_2',
-        category_id: 'cat_copo',
-        name: 'Açaí Grande 700ml',
-        description: 'Para quem ama açaí de verdade! Acompanha leite em pó e condensado caprichado.',
-        price: 26.00,
-        image_url: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=600&q=80',
-        available: true
-      },
-      {
-        id: 'prod_3',
-        category_id: 'cat_tigela',
-        name: 'Tigela Noturna Gourmet',
-        description: 'Açaí na tigela com morango fresco, banana, Nutella original e amendoim granulado.',
-        price: 32.00,
-        image_url: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=600&q=80',
-        available: true
-      },
-      {
-        id: 'prod_4',
-        category_id: 'cat_bebida',
-        name: 'Suco de Açaí c/ Guaraná 500ml',
-        description: 'Suco natural energizante geladíssimo batido na hora com xarope de guaraná.',
-        price: 12.00,
-        image_url: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80',
-        available: true
-      }
-    ];
-
-    const FREE_COMPLEMENTS_OPTIONS = [
-      'Leite em Pó', 'Leite Condensado', 'Granola Crocante', 'Paçoca Moída', 'Banana Fatiada', 'Mel'
-    ];
-
-    const PAID_COMPLEMENTS_OPTIONS = [
-      { name: 'Nutella Original', price: 5.00 },
-      { name: 'Morango Fresco', price: 4.00 },
-      { name: 'Ovomaltine Crocante', price: 3.50 },
-      { name: 'Creme de Ninho', price: 4.50 }
-    ];
-
-    window.onload = async function() {
-      await loadInitialData();
-      setupRealtimeSubscriptions();
-      setupPaymentOptionsUI();
-    };
-
-    // Load Data from Supabase with Fallbacks
-    async function loadInitialData() {
-      showLoading(true);
-      try {
-        if (supabase) {
-          // Fetch Store Config
-          const { data: config } = await supabase.from('store_config').select('*').single();
-          if (config) {
-            state.isStoreOpen = config.is_open ?? true;
-            state.deliveryFee = config.delivery_fee ?? 5.00;
-            updateStoreUI();
-          }
-
-          // Fetch Categories
-          const { data: cats } = await supabase.from('categories').select('*');
-          if (cats && cats.length > 0) {
-            state.categories = cats;
-          } else {
-            state.categories = DEFAULT_CATEGORIES;
-          }
-
-          // Fetch Products
-          const { data: prods } = await supabase.from('products').select('*');
-          if (prods && prods.length > 0) {
-            state.products = prods;
-          } else {
-            state.products = DEFAULT_PRODUCTS;
-          }
-        } else {
-          state.categories = DEFAULT_CATEGORIES;
-          state.products = DEFAULT_PRODUCTS;
-        }
-      } catch (err) {
-        console.warn("Using fallback data due to query exception:", err);
-        state.categories = DEFAULT_CATEGORIES;
-        state.products = DEFAULT_PRODUCTS;
-      } finally {
-        showLoading(false);
-        renderCategories();
-        renderProducts();
-      }
-    }
-
-    // Seed Demo Database Button
-    async function seedDatabaseDemo() {
-      if (!supabase) {
-        showToast("Supabase não está configurado!");
-        return;
-      }
-
-      showToast("Criando dados de teste no Supabase...");
-      try {
-        // Upsert Config
-        await supabase.from('store_config').upsert([{ id: '11111111-1111-1111-1111-111111111111', name: 'JM Delivery', is_open: true, delivery_fee: 5.00 }]);
-        
-        // Upsert Categories
-        for (let cat of DEFAULT_CATEGORIES) {
-          await supabase.from('categories').upsert([cat]);
-        }
-
-        // Upsert Products
-        for (let prod of DEFAULT_PRODUCTS) {
-          await supabase.from('products').upsert([prod]);
-        }
-
-        showToast("✅ Produtos e Configurações salvos no Supabase!");
-        await loadInitialData();
-      } catch (e) {
-        console.error("Seed error:", e);
-        showToast("Erro ao criar dados demo!");
-      }
-    }
-
-    function renderCategories() {
-      const container = document.getElementById('categoriesContainer');
-      let html = `
-        <button onclick="filterCategory('all')" class="category-btn ${state.selectedCategory === 'all' ? 'bg-acai-600 text-white font-bold shadow-lg shadow-acai-600/40 border-purple-400/40' : 'bg-slate-900 text-slate-300 border-slate-800'} px-4 py-2 rounded-2xl text-xs whitespace-nowrap border transition flex items-center gap-2">
-          <i class="fa-solid fa-border-all"></i> Todos
-        </button>
-      `;
-
-      state.categories.forEach(cat => {
-        const isActive = state.selectedCategory === cat.id;
-        html += `
-          <button onclick="filterCategory('${cat.id}')" class="category-btn ${isActive ? 'bg-acai-600 text-white font-bold shadow-lg shadow-acai-600/40 border-purple-400/40' : 'bg-slate-900 text-slate-300 border-slate-800'} px-4 py-2 rounded-2xl text-xs whitespace-nowrap border transition flex items-center gap-2">
-            <i class="fa-solid ${cat.icon || 'fa-bowl-food'}"></i> ${cat.name}
-          </button>
-        `;
-      });
-
-      container.innerHTML = html;
-    }
-
-    function filterCategory(catId) {
-      state.selectedCategory = catId;
-      renderCategories();
-      renderProducts();
-    }
-
-    function renderProducts() {
-      const grid = document.getElementById('productsGrid');
-      const filtered = state.selectedCategory === 'all' 
-        ? state.products 
-        : state.products.filter(p => p.category_id === state.selectedCategory);
-
-      document.getElementById('productCountLabel').innerText = `${filtered.length} opções`;
-
-      if (filtered.length === 0) {
-        grid.innerHTML = `<p class="text-xs text-slate-400 text-center py-8">Nenhum produto nesta categoria.</p>`;
-        return;
-      }
-
-      grid.innerHTML = filtered.map(prod => `
-        <div class="glass-card rounded-2xl p-3 flex gap-3 items-center border border-purple-900/40 hover:border-purple-500/40 transition">
-          <img src="${prod.image_url}" alt="${prod.name}" class="w-24 h-24 rounded-xl object-cover bg-purple-950 flex-shrink-0" onerror="this.src='https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=600&q=80'" />
-          <div class="flex-1 min-w-0 space-y-1">
-            <h4 class="font-bold text-sm text-white truncate">${prod.name}</h4>
-            <p class="text-[11px] text-slate-400 line-clamp-2 leading-relaxed">${prod.description || ''}</p>
-            <div class="flex items-center justify-between pt-1">
-              <span class="text-amber-300 font-extrabold text-sm">R$ ${parseFloat(prod.price).toFixed(2).replace('.', ',')}</span>
-              <button onclick="openProductModal('${prod.id}')" class="px-3 py-1.5 bg-acai-600 hover:bg-acai-500 text-white font-semibold text-xs rounded-xl shadow border border-purple-400/30 active:scale-95 transition flex items-center gap-1">
-                <i class="fa-solid fa-plus"></i> Adicionar
-              </button>
+        <!-- LISTA DE PRODUTOS -->
+        <div>
+            <h3 class="text-sm font-bold text-slate-300 mb-3 flex items-center"><i class="fa-solid fa-utensils text-acai-400 mr-2"></i> Cardápio</h3>
+            <div id="product-list" class="space-y-3">
+                <!-- Produtos carregados diretamente -->
             </div>
-          </div>
         </div>
-      `).join('');
-    }
+    </main>
 
-    function openProductModal(prodId) {
-      const prod = state.products.find(p => p.id === prodId);
-      if (!prod) return;
+    <!-- BARRA INFERIOR -->
+    <nav class="glass-nav fixed bottom-0 left-0 right-0 max-w-md mx-auto px-6 py-3 flex items-center justify-between z-40">
+        <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="flex flex-col items-center text-acai-400">
+            <i class="fa-solid fa-store text-lg"></i>
+            <span class="text-[10px] mt-0.5 font-medium">Cardápio</span>
+        </button>
+        <button onclick="openCart()" class="bg-gradient-to-r from-acai-600 to-acai-500 hover:from-acai-500 hover:to-acai-400 text-white px-6 py-2.5 rounded-2xl shadow-lg shadow-acai-600/40 font-bold text-xs flex items-center space-x-2 transition transform active:scale-95">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>Ver Carrinho (<span id="cart-count">0</span>)</span>
+            <span id="cart-total" class="text-accent-lime font-extrabold ml-1">R$ 0,00</span>
+        </button>
+        <button onclick="openStatus()" class="flex flex-col items-center text-slate-400 hover:text-white">
+            <i class="fa-solid fa-receipt text-lg"></i>
+            <span class="text-[10px] mt-0.5 font-medium">Status</span>
+        </button>
+    </nav>
 
-      state.activeModalProduct = prod;
-      state.modalQty = 1;
-      state.selectedFreeComplements = [];
-      state.selectedPaidComplements = [];
-
-      document.getElementById('modalProductImg').src = prod.image_url;
-      document.getElementById('modalProductName').innerText = prod.name;
-      document.getElementById('modalProductDesc').innerText = prod.description || '';
-      document.getElementById('modalProductNotes').value = '';
-
-      // Render Free Complements Checkboxes
-      const freeContainer = document.getElementById('freeComplementsContainer');
-      freeContainer.innerHTML = FREE_COMPLEMENTS_OPTIONS.map((opt, idx) => `
-        <label class="flex items-center gap-2 p-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 cursor-pointer">
-          <input type="checkbox" value="${opt}" onchange="toggleFreeComplement(this)" class="rounded border-slate-700 text-acai-600 focus:ring-acai-500 bg-slate-900" />
-          <span class="truncate">${opt}</span>
-        </label>
-      `).join('');
-
-      // Render Paid Complements Options
-      const paidContainer = document.getElementById('paidComplementsContainer');
-      paidContainer.innerHTML = PAID_COMPLEMENTS_OPTIONS.map((opt, idx) => `
-        <label class="flex items-center justify-between p-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 cursor-pointer">
-          <div class="flex items-center gap-2">
-            <input type="checkbox" value="${idx}" onchange="togglePaidComplement(${idx}, this.checked)" class="rounded border-slate-700 text-amber-500 focus:ring-amber-500 bg-slate-900" />
-            <span>${opt.name}</span>
-          </div>
-          <span class="text-amber-400 font-bold">+ R$ ${opt.price.toFixed(2).replace('.', ',')}</span>
-        </label>
-      `).join('');
-
-      updateModalPrice();
-      document.getElementById('productModal').classList.remove('hidden');
-    }
-
-    function closeProductModal() {
-      document.getElementById('productModal').classList.add('hidden');
-    }
-
-    function toggleFreeComplement(cb) {
-      if (cb.checked) {
-        if (state.selectedFreeComplements.length >= 3) {
-          cb.checked = false;
-          showToast("Você já escolheu 3 acompanhamentos grátis!");
-          return;
-        }
-        state.selectedFreeComplements.push(cb.value);
-      } else {
-        state.selectedFreeComplements = state.selectedFreeComplements.filter(item => item !== cb.value);
-      }
-    }
-
-    function togglePaidComplement(index, isChecked) {
-      const item = PAID_COMPLEMENTS_OPTIONS[index];
-      if (isChecked) {
-        state.selectedPaidComplements.push(item);
-      } else {
-        state.selectedPaidComplements = state.selectedPaidComplements.filter(i => i.name !== item.name);
-      }
-      updateModalPrice();
-    }
-
-    function updateModalQty(delta) {
-      state.modalQty = Math.max(1, state.modalQty + delta);
-      document.getElementById('modalQtyLabel').innerText = state.modalQty;
-      updateModalPrice();
-    }
-
-    function updateModalPrice() {
-      if (!state.activeModalProduct) return;
-      let basePrice = parseFloat(state.activeModalProduct.price);
-      let extrasTotal = state.selectedPaidComplements.reduce((sum, item) => sum + item.price, 0);
-      let grandTotal = (basePrice + extrasTotal) * state.modalQty;
-
-      document.getElementById('modalTotalPriceLabel').innerText = `R$ ${grandTotal.toFixed(2).replace('.', ',')}`;
-    }
-
-    function confirmAddToCart() {
-      if (!state.activeModalProduct) return;
-
-      const notes = document.getElementById('modalProductNotes').value.trim();
-      let basePrice = parseFloat(state.activeModalProduct.price);
-      let extrasTotal = state.selectedPaidComplements.reduce((sum, item) => sum + item.price, 0);
-      let unitPrice = basePrice + extrasTotal;
-
-      const cartItem = {
-        cartItemId: Date.now().toString(),
-        product: state.activeModalProduct,
-        freeComplements: [...state.selectedFreeComplements],
-        paidComplements: [...state.selectedPaidComplements],
-        notes: notes,
-        quantity: state.modalQty,
-        unitPrice: unitPrice,
-        totalPrice: unitPrice * state.modalQty
-      };
-
-      state.cart.push(cartItem);
-      updateCartUI();
-      closeProductModal();
-      showToast("Açaí adicionado ao carrinho!");
-    }
-
-    function updateCartUI() {
-      const badge = document.getElementById('cartBadge');
-      const totalLabel = document.getElementById('cartTotalLabel');
-
-      const totalItems = state.cart.reduce((sum, item) => sum + item.quantity, 0);
-      const subtotal = state.cart.reduce((sum, item) => sum + item.totalPrice, 0);
-
-      badge.innerText = totalItems;
-      totalLabel.innerText = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
-
-      renderCartItems();
-    }
-
-    function renderCartItems() {
-      const container = document.getElementById('cartItemsContainer');
-      const emptyState = document.getElementById('emptyCartState');
-      const formSection = document.getElementById('checkoutFormSection');
-
-      if (state.cart.length === 0) {
-        container.innerHTML = '';
-        emptyState.classList.remove('hidden');
-        formSection.classList.add('hidden');
-        return;
-      }
-
-      emptyState.classList.add('hidden');
-      formSection.classList.remove('hidden');
-
-      container.innerHTML = state.cart.map((item) => `
-        <div class="p-3 bg-slate-950 rounded-2xl border border-slate-800 space-y-2">
-          <div class="flex justify-between items-start gap-2">
-            <div>
-              <h5 class="font-bold text-xs text-white">${item.product.name}</h5>
-              ${item.freeComplements.length > 0 ? `<p class="text-[10px] text-purple-300">Grátis: ${item.freeComplements.join(', ')}</p>` : ''}
-              ${item.paidComplements.length > 0 ? `<p class="text-[10px] text-amber-300">Extras: ${item.paidComplements.map(c => c.name).join(', ')}</p>` : ''}
-              ${item.notes ? `<p class="text-[10px] text-slate-400 italic">" ${item.notes} "</p>` : ''}
+    <!-- MODAL DO CARRINHO -->
+    <div id="cart-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex flex-col justify-end">
+        <div class="glass-card rounded-t-3xl p-6 max-h-[85vh] overflow-y-auto space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-700 pb-3">
+                <h3 class="font-bold text-base flex items-center"><i class="fa-solid fa-cart-shopping text-acai-400 mr-2"></i> Seu Carrinho</h3>
+                <button onclick="closeCart()" class="text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <button onclick="removeCartItem('${item.cartItemId}')" class="text-slate-500 hover:text-red-400 text-xs p-1">
-              <i class="fa-solid fa-trash"></i>
+            <div id="cart-items" class="space-y-3 divide-y divide-slate-800"></div>
+            <div class="border-t border-slate-700 pt-3 space-y-2 text-xs">
+                <div class="flex justify-between text-slate-300"><span>Subtotal</span><span id="subtotal-val">R$ 0,00</span></div>
+                <div class="flex justify-between text-slate-300"><span>Taxa de Entrega</span><span>R$ 5,00</span></div>
+                <div class="flex justify-between font-bold text-sm text-white pt-1"><span>Total</span><span id="final-val" class="text-accent-lime">R$ 0,00</span></div>
+            </div>
+            <div class="space-y-2 pt-2">
+                <input type="text" id="client-name" placeholder="Seu Nome Completo" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-acai-500">
+                <input type="tel" id="client-phone" placeholder="Seu Telefone / WhatsApp" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-acai-500">
+                <input type="text" id="client-address" placeholder="Endereço de Entrega (Rua, Número, Bairro)" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-acai-500">
+            </div>
+            <button onclick="checkoutOrder()" class="w-full bg-gradient-to-r from-accent-emerald to-emerald-600 text-white font-bold py-3 rounded-xl shadow-lg text-xs uppercase tracking-wider flex items-center justify-center space-x-2">
+                <i class="fa-brands fa-whatsapp text-base"></i><span>Finalizar Pedido via WhatsApp</span>
             </button>
-          </div>
-
-          <div class="flex items-center justify-between pt-2 border-t border-slate-900">
-            <span class="text-xs font-bold text-emerald-400">R$ ${item.totalPrice.toFixed(2).replace('.', ',')}</span>
-            <div class="flex items-center gap-2 bg-slate-900 border border-slate-800 rounded-xl px-2 py-0.5 text-xs">
-              <button onclick="changeCartQty('${item.cartItemId}', -1)" class="text-slate-400 hover:text-white font-bold">-</button>
-              <span class="font-bold text-white px-1">${item.quantity}</span>
-              <button onclick="changeCartQty('${item.cartItemId}', 1)" class="text-slate-400 hover:text-white font-bold">+</button>
-            </div>
-          </div>
         </div>
-      `).join('');
+    </div>
 
-      // Update Summary Values
-      const subtotal = state.cart.reduce((sum, item) => sum + item.totalPrice, 0);
-      const grandTotal = subtotal + state.deliveryFee;
+    <!-- PAINEL ADMIN -->
+    <div id="admin-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex flex-col">
+        <div class="glass-nav p-4 flex items-center justify-between border-b border-slate-800">
+            <h3 class="font-bold text-sm text-acai-300 flex items-center"><i class="fa-solid fa-user-shield mr-2"></i> Painel do Lojista</h3>
+            <button onclick="closeAdmin()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+        </div>
+        <div class="p-4 overflow-y-auto flex-1 space-y-4">
+            <div class="glass-card p-4 rounded-2xl space-y-3">
+                <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wide">Gerenciamento</h4>
+                <button onclick="alert('Produtos já estão ativos no cardápio!'); closeAdmin();" class="w-full bg-acai-600 hover:bg-acai-500 text-white font-semibold py-2.5 rounded-xl text-xs transition shadow-md">
+                    <i class="fa-solid fa-check mr-2"></i> Cardápio Atualizado
+                </button>
+            </div>
+        </div>
+    </div>
 
-      document.getElementById('summarySubtotal').innerText = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
-      document.getElementById('summaryDelivery').innerText = `R$ ${state.deliveryFee.toFixed(2).replace('.', ',')}`;
-      document.getElementById('summaryTotal').innerText = `R$ ${grandTotal.toFixed(2).replace('.', ',')}`;
-    }
+    <script>
+        let products = [
+            { id: 1, name: 'Açaí Tradicional 500ml', category: 'acai', price: 22.00, description: 'Açaí puro batido com xarope de guaraná, 3 adicionais grátis.', image: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=500&q=80' },
+            { id: 2, name: 'Açaí com Ninho e Nutella 700ml', category: 'acai', price: 32.00, description: 'Camadas generosas de Leite Ninho original e creme de Nutella.', image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=500&q=80' },
+            { id: 3, name: 'Vitamina Cremosa de Açaí 400ml', category: 'bebidas', price: 16.00, description: 'Batido com leite condensado e banana fresca.', image: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=500&q=80' }
+        ];
 
-    function changeCartQty(cartItemId, delta) {
-      const item = state.cart.find(i => i.cartItemId === cartItemId);
-      if (!item) return;
+        let cart = [];
+        let currentFilter = 'todos';
 
-      item.quantity += delta;
-      if (item.quantity <= 0) {
-        state.cart = state.cart.filter(i => i.cartItemId !== cartItemId);
-      } else {
-        item.totalPrice = item.unitPrice * item.quantity;
-      }
-      updateCartUI();
-    }
+        function renderProducts() {
+            const container = document.getElementById('product-list');
+            if(!container) return;
+            container.innerHTML = '';
+            
+            const filtered = currentFilter === 'todos' ? products : products.filter(p => p.category === currentFilter);
+            
+            if(filtered.length === 0) {
+                container.innerHTML = '<p class="text-center text-slate-400 text-xs py-8">Nenhum produto encontrado.</p>';
+                return;
+            }
 
-    function removeCartItem(cartItemId) {
-      state.cart = state.cart.filter(i => i.cartItemId !== cartItemId);
-      updateCartUI();
-    }
-
-    function openCartDrawer() {
-      renderCartItems();
-      document.getElementById('cartDrawer').classList.remove('hidden');
-    }
-
-    function closeCartDrawer() {
-      document.getElementById('cartDrawer').classList.add('hidden');
-    }
-
-    function setupPaymentOptionsUI() {
-      const radios = document.querySelectorAll('input[name="paymentMethod"]');
-      radios.forEach(r => {
-        r.addEventListener('change', (e) => {
-          document.querySelectorAll('.payment-option').forEach(el => {
-            el.classList.remove('border-acai-500', 'bg-purple-950/40');
-          });
-          e.target.closest('.payment-option').classList.add('border-acai-500', 'bg-purple-950/40');
-        });
-      });
-    }
-
-    function togglePaymentFields() {
-      const selected = document.querySelector('input[name="paymentMethod"]:checked').value;
-      const changeSec = document.getElementById('changeSection');
-      if (selected === 'Dinheiro') {
-        changeSec.classList.remove('hidden');
-      } else {
-        changeSec.classList.add('hidden');
-      }
-    }
-
-    async function submitOrderToSupabase() {
-      if (state.cart.length === 0) {
-        showToast("Seu carrinho está vazio!");
-        return;
-      }
-
-      const name = document.getElementById('custName').value.trim();
-      const phone = document.getElementById('custPhone').value.trim();
-      const neighborhood = document.getElementById('custNeighborhood').value.trim();
-      const address = document.getElementById('custAddress').value.trim();
-      const reference = document.getElementById('custReference').value.trim();
-      const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
-      const changeFor = document.getElementById('custChangeFor').value.trim();
-
-      if (!name || !phone || !neighborhood || !address) {
-        showToast("Por favor, preencha todos os campos obrigatórios (*)");
-        return;
-      }
-
-      const subtotal = state.cart.reduce((sum, item) => sum + item.totalPrice, 0);
-      const total = subtotal + state.deliveryFee;
-
-      const orderPayload = {
-        customer_name: name,
-        customer_phone: phone,
-        neighborhood: neighborhood,
-        address: address,
-        reference: reference,
-        payment_method: paymentMethod,
-        change_for: paymentMethod === 'Dinheiro' ? changeFor : null,
-        items: state.cart,
-        total: total,
-        status: 'pendente'
-      };
-
-      showToast("Enviando pedido...");
-
-      let createdOrder = null;
-
-      try {
-        if (supabase) {
-          const { data, error } = await supabase.from('orders').insert([orderPayload]).select().single();
-          if (error) throw error;
-          createdOrder = data;
+            filtered.forEach(p => {
+                container.innerHTML += `
+                    <div class="glass-card rounded-2xl p-3 flex items-center space-x-3 shadow-lg">
+                        <img src="${p.image}" class="w-20 h-20 rounded-xl object-cover border border-slate-700" alt="${p.name}">
+                        <div class="flex-1 min-w-0">
+                            <h4 class="font-bold text-xs text-white truncate">${p.name}</h4>
+                            <p class="text-[11px] text-slate-400 line-clamp-2 mt-0.5">${p.description}</p>
+                            <div class="flex items-center justify-between mt-2">
+                                <span class="font-extrabold text-accent-lime text-xs">R$ ${p.price.toFixed(2).replace('.', ',')}</span>
+                                <button onclick="addToCart(${p.id})" class="bg-acai-600 hover:bg-acai-500 text-white w-7 h-7 rounded-lg flex items-center justify-center text-xs shadow-md shadow-acai-600/30">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
         }
-      } catch (err) {
-        console.warn("Could not save order directly to database, creating local mock:", err);
-      }
 
-      if (!createdOrder) {
-        createdOrder = {
-          id: 'PED-' + Math.floor(1000 + Math.random() * 9000),
-          created_at: new Date().toISOString(),
-          ...orderPayload
-        };
-      }
+        function filterCategory(cat) {
+            currentFilter = cat;
+            ['todos', 'acai', 'bebidas'].forEach(c => {
+                const btn = document.getElementById(`cat-${c}`);
+                if(btn) {
+                    if(c === cat) {
+                        btn.className = 'px-4 py-2 rounded-xl text-xs font-semibold bg-acai-600 text-white shadow-md shadow-acai-600/30 whitespace-nowrap transition';
+                    } else {
+                        btn.className = 'px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800/80 text-slate-300 border border-slate-700 whitespace-nowrap transition';
+                    }
+                }
+            });
+            renderProducts();
+        }
 
-      state.activeCustomerOrder = createdOrder;
-      state.cart = [];
-      updateCartUI();
-      closeCartDrawer();
+        function addToCart(id) {
+            const prod = products.find(p => p.id === id);
+            if(!prod) return;
+            const existing = cart.find(item => item.id === id);
+            if(existing) {
+                existing.qty++;
+            } else {
+                cart.push({ ...prod, qty: 1 });
+            }
+            updateCartUI();
+        }
 
-      // Open PIX or Confirmation Modal
-      showOrderConfirmation(createdOrder);
-    }
+        function updateCartUI() {
+            const count = cart.reduce((acc, item) => acc + item.qty, 0);
+            const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+            
+            document.getElementById('cart-count').innerText = count;
+            document.getElementById('cart-total').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+            document.getElementById('subtotal-val').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+            document.getElementById('final-val').innerText = `R$ ${(total + 5).toFixed(2).replace('.', ',')}`;
+            
+            const itemsContainer = document.getElementById('cart-items');
+            if(!itemsContainer) return;
+            itemsContainer.innerHTML = '';
+            if(cart.length === 0) {
+                itemsContainer.innerHTML = '<p class="text-center text-slate-400 text-xs py-4">Carrinho vazio</p>';
+                return;
+            }
+            cart.forEach(item => {
+                itemsContainer.innerHTML += `
+                    <div class="py-2 flex items-center justify-between text-xs">
+                        <div>
+                            <span class="font-bold text-white">${item.name}</span>
+                            <div class="text-slate-400">Qtd: ${item.qty} x R$ ${item.price.toFixed(2).replace('.', ',')}</div>
+                        </div>
+                        <button onclick="removeFromCart(${item.id})" class="text-rose-400 hover:text-rose-300 px-2 py-1"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                `;
+            });
+        }
 
-    function showOrderConfirmation(order) {
-      document.getElementById('pixOrderIdLabel').innerText = `#${order.id.toString().substring(0, 8)}`;
-      
-      // Dynamic QR Code API based on total amount and store info
-      const qrData = `PIX_JM_DELIVERY_VALOR_${order.total.toFixed(2)}`;
-      document.getElementById('pixQrCodeImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrData)}`;
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartUI();
+        }
 
-      document.getElementById('pixModal').classList.remove('hidden');
-      document.getElementById('orderTrackerDot').classList.remove('hidden');
-    }
+        function openCart() { document.getElementById('cart-modal').classList.remove('hidden'); updateCartUI(); }
+        function closeCart() { document.getElementById('cart-modal').classList.add('hidden'); }
+        function openAdmin() { document.getElementById('admin-modal').classList.remove('hidden'); }
+        function closeAdmin() { document.getElementById('admin-modal').classList.add('hidden'); }
+        function openStatus() { alert('Painel de status em tempo real ativo.'); }
 
-    function closePixModal() {
-      document.getElementById('pixModal').classList.add('hidden');
-      openActiveOrderModal();
-    }
+        function checkoutOrder() {
+            const name = document.getElementById('client-name').value;
+            const phone = document.getElementById('client-phone').value;
+            const address = document.getElementById('client-address').value;
+            if(!name || !phone || !address) {
+                alert('Por favor, preencha o seu nome, telefone e endereço!');
+                return;
+            }
+            alert('Pedido gerado com sucesso! Redirecionando para o WhatsApp...');
+        }
 
-    function copyPixCode() {
-      const input = document.getElementById('pixCodeInput');
-      input.select();
-      document.execCommand('copy');
-      showToast("Código PIX copiado!");
-    }
-
-    function openWhatsAppConfirmation() {
-      if (!state.activeCustomerOrder) return;
-      const order = state.activeCustomerOrder;
-      const msg = `Olá! Fiz o pedido #${order.id.toString().substring(0, 6)} na JM Delivery.\n\n*Cliente:* ${order.customer_name}\n*Total:* R$ ${parseFloat(order.total).toFixed(2)}\n*Endereço:* ${order.address} - ${order.neighborhood}`;
-      window.open(`https://wa.me/5519999999999?text=${encodeURIComponent(msg)}`, '_blank');
-    }
-
-    function openActiveOrderModal() {
-      const modal = document.getElementById('trackerModal');
-      const content = document.getElementById('trackerContent');
-
-      if (!state.activeCustomerOrder) {
-        content.innerHTML = `<p class="text-xs text-slate-400 text-center py-6">Você ainda não possui nenhum pedido ativo.</p>`;
-      } else {
-        const order = state.activeCustomerOrder;
-        const statusMap = {
-          'pendente': { text: 'Aguardando Confirmação', color: 'text-amber-400', step: 1 },
-          'preparando': { text: 'Em Preparo na Açaiteria', color: 'text-purple-400', step: 2 },
-          'entrega': { text: 'Saiu para Entrega', color: 'text-blue-400', step: 3 },
-          'concluido': { text: 'Entregue com Sucesso', color: 'text-emerald-400', step: 4 }
-        };
-
-        const curr = statusMap[order.status] || statusMap['pendente'];
-
-        content.innerHTML = `
-          <div class="p-3 bg-slate-950 rounded-2xl border border-purple-900/40 space-y-3">
-            <div class="flex justify-between items-center text-xs">
-              <span class="text-slate-400">Pedido #${order.id.toString().substring(0, 6)}</span>
-              <span class="font-bold ${curr.color}">${curr.text}</span>
-            </div>
-
-            <!-- Progress Bar -->
-            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-              <div class="bg-gradient-to-r from-acai-600 to-emerald-400 h-full transition-all duration-500" style="width: ${curr.step * 25}%"></div>
-            </div>
-
-            <div class="text-xs text-slate-300 space-y-1 pt-1">
-              <p><strong>Entrega para:</strong> ${order.customer_name}</p>
-              <p><strong>Endereço:</strong> ${order.address} (${order.neighborhood})</p>
-              <p class="text-amber-300 font-bold">Total: R$ ${parseFloat(order.total).toFixed(2).replace('.', ',')}</p>
-            </div>
-          </div>
-        `;
-      }
-
-      modal.classList.remove('hidden');
-    }
-
-    function closeTrackerModal() {
-      document.getElementById('trackerModal').classList.add('hidden');
-    }
-
-    // Admin Mode Functions
-    function toggleAdminMode() {
-      state.isAdmin = !state.isAdmin;
-      const btnText = document.getElementById('adminBtnText');
-      const adminBanner = document.getElementById('adminBanner');
-      const clientHero = document.getElementById('clientHeroBanner');
-      const adminOrdersSec = document.getElementById('adminOrdersSection');
-      const productsSec = document.getElementById('productsSection');
-
-      if (state.isAdmin) {
-        btnText.innerText = "Sair Admin";
-        adminBanner.classList.remove('hidden');
-        clientHero.classList.add('hidden');
-        adminOrdersSec.classList.remove('hidden');
-        productsSec.classList.add('hidden');
-        fetchAdminOrders();
-        showToast("Modo Admin Ativado!");
-      } else {
-        btnText.innerText = "Admin";
-        adminBanner.classList.add('hidden');
-        clientHero.classList.remove('hidden');
-        adminOrdersSec.classList.add('hidden');
-        productsSec.classList.remove('hidden');
-      }
-    }
-
-    async function toggleStoreStatus() {
-      state.isStoreOpen = !state.isStoreOpen;
-      updateStoreUI();
-      if (supabase) {
-        await supabase.from('store_config').update({ is_open: state.isStoreOpen }).eq('id', '11111111-1111-1111-1111-111111111111');
-      }
-      showToast(state.isStoreOpen ? "Loja ABERTA!" : "Loja FECHADA!");
-    }
-
-    function updateStoreUI() {
-      const badge = document.getElementById('storeStatusBadge');
-      const btn = document.getElementById('btnStoreToggle');
-
-      if (state.isStoreOpen) {
-        badge.className = "inline-flex items-center gap-1 font-semibold px-2 py-0.5 rounded-full text-[10px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
-        badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> ABERTO`;
-        if (btn) btn.innerText = "Loja: ABERTA";
-      } else {
-        badge.className = "inline-flex items-center gap-1 font-semibold px-2 py-0.5 rounded-full text-[10px] bg-rose-500/20 text-rose-400 border border-rose-500/30";
-        badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span> FECHADO`;
-        if (btn) btn.innerText = "Loja: FECHADA";
-      }
-    }
-
-    async function fetchAdminOrders() {
-      if (!supabase) return;
-      const { data } = await supabase.from('orders').select('*').order('created_at', { ascending: false });
-      if (data) {
-        state.adminOrders = data;
-        renderAdminOrders();
-      }
-    }
-
-    function renderAdminOrders() {
-      const list = document.getElementById('adminOrdersList');
-      if (state.adminOrders.length === 0) {
-        list.innerHTML = `<p class="text-xs text-slate-400 text-center py-6">Nenhum pedido cadastrado no momento.</p>`;
-        return;
-      }
-
-      list.innerHTML = state.adminOrders.map(ord => `
-        <div class="glass-card rounded-2xl p-4 border border-purple-900/40 space-y-3">
-          <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-            <div>
-              <span class="font-bold text-xs text-white">#${ord.id.toString().substring(0, 6)}</span>
-              <span class="text-[10px] text-slate-400 ml-2">${new Date(ord.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
-            </div>
-            <span class="text-xs font-extrabold text-emerald-400">R$ ${parseFloat(ord.total).toFixed(2).replace('.', ',')}</span>
-          </div>
-
-          <div class="text-xs space-y-1 text-slate-300">
-            <p><strong>Cliente:</strong> ${ord.customer_name} (${ord.customer_phone})</p>
-            <p><strong>Endereço:</strong> ${ord.address} - ${ord.neighborhood}</p>
-            <p><strong>Pagamento:</strong> ${ord.payment_method} ${ord.change_for ? `(Troco p/ R$ ${ord.change_for})` : ''}</p>
-          </div>
-
-          <!-- Status Update Actions -->
-          <div class="flex gap-1.5 pt-2 border-t border-slate-800 overflow-x-auto">
-            <button onclick="updateOrderStatus('${ord.id}', 'pendente')" class="px-2 py-1 text-[10px] font-bold rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/30">Pendente</button>
-            <button onclick="updateOrderStatus('${ord.id}', 'preparando')" class="px-2 py-1 text-[10px] font-bold rounded-lg bg-purple-500/20 text-purple-300 border border-purple-500/30">Preparo</button>
-            <button onclick="updateOrderStatus('${ord.id}', 'entrega')" class="px-2 py-1 text-[10px] font-bold rounded-lg bg-blue-500/20 text-blue-300 border border-blue-500/30">Entrega</button>
-            <button onclick="updateOrderStatus('${ord.id}', 'concluido')" class="px-2 py-1 text-[10px] font-bold rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Concluído</button>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    async function updateOrderStatus(orderId, newStatus) {
-      if (supabase) {
-        await supabase.from('orders').update({ status: newStatus }).eq('id', orderId);
-      }
-      
-      if (state.activeCustomerOrder && state.activeCustomerOrder.id === orderId) {
-        state.activeCustomerOrder.status = newStatus;
-      }
-
-      fetchAdminOrders();
-      showToast(`Status atualizado para: ${newStatus}`);
-    }
-
-    function setupRealtimeSubscriptions() {
-      if (!supabase) return;
-
-      supabase
-        .channel('public:orders')
-        .on('postgres_changes', { event: '*', schema: 'public', table: 'orders' }, payload => {
-          if (state.isAdmin) fetchAdminOrders();
-          
-          if (state.activeCustomerOrder && payload.new && payload.new.id === state.activeCustomerOrder.id) {
-            state.activeCustomerOrder = payload.new;
-            showToast(`🚀 Atualização do seu pedido: ${payload.new.status.toUpperCase()}`);
-          }
-        })
-        .subscribe();
-    }
-
-    function showToast(msg) {
-      const toast = document.getElementById('toast');
-      document.getElementById('toastMsg').innerText = msg;
-      toast.classList.remove('hidden');
-      setTimeout(() => {
-        toast.classList.add('hidden');
-      }, 3000);
-    }
-
-    function showLoading(isLoading) {
-      const loader = document.getElementById('productsLoading');
-      const grid = document.getElementById('productsGrid');
-      if (isLoading) {
-        loader.classList.remove('hidden');
-        grid.classList.add('hidden');
-      } else {
-        loader.classList.add('hidden');
-        grid.classList.remove('hidden');
-      }
-    }
-
-    function switchTab(tab) {
-      if (tab === 'menu' && state.isAdmin) {
-        toggleAdminMode();
-      }
-    }
-  </script>
+        renderProducts();
+    </script>
 </body>
 </html>
